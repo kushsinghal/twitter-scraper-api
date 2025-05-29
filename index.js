@@ -1,18 +1,18 @@
-// index.js
-
 require('dotenv').config();
 const express = require('express');
 const scrapeTweet = require('./scraper');
+const cors = require('cors');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(require('cors')());
+app.use(cors());
 
 app.get('/scrape', async (req, res) => {
   const { tweetUrl } = req.query;
 
   if (!tweetUrl || (!tweetUrl.includes('twitter.com') && !tweetUrl.includes('x.com'))) {
-  return res.status(400).json({ error: 'Invalid or missing Twitter/X URL' });
+    return res.status(400).json({ error: 'Invalid or missing Twitter/X URL' });
   }
 
   try {

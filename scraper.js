@@ -1,34 +1,28 @@
-// scraper.js
-
 const puppeteer = require("puppeteer");
 
 async function scrapeTweet(tweetUrl) {
   const browser = await puppeteer.launch({
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: ['--no-sandbox', '--disable-setuid-sandbox'] // required for sandboxed platforms like Render
   });
 
   try {
     const page = await browser.newPage();
     await page.goto(tweetUrl, { waitUntil: 'networkidle2', timeout: 0 });
 
-    // Wait for the tweet to load
     await page.waitForSelector('article [data-testid="tweetText"]');
 
-    // Extract tweet text
     const tweetText = await page.$eval(
       'article [data-testid="tweetText"]',
       el => el.innerText
     );
 
-    // Extract media image/video links
     const mediaUrls = await page.$$eval('article img[src]', imgs =>
       imgs
         .map(img => img.src)
-        .filter(src => src.includes('twimg.com/media')) // only tweet images
+        .filter(src => src.includes('twimg.com/media'))
     );
 
-    // Extract tweet stats (likes, retweets, replies, views)
     const stats = await page.$$eval('article [data-testid]', els => {
       const data = {};
       els.forEach(el => {
