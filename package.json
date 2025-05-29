@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "install": "PUPPETEER_CACHE_DIR=./.cache puppeteer install",
+     "start": "node index.js"
 },
   "keywords": [],
   "author": "",
