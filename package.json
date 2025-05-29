@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+   "postinstall": "puppeteer install",
+  "start": "node index.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
@@ -16,5 +16,14 @@
     "puppeteer": "^24.9.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kushsinghal/twitter-scraper-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kushsinghal/twitter-scraper-api/issues"
+  },
+  "homepage": "https://github.com/kushsinghal/twitter-scraper-api#readme",
+  "description": ""
 }
