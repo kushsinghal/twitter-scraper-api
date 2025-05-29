@@ -11,8 +11,8 @@ app.use(require('cors')());
 app.get('/scrape', async (req, res) => {
   const { tweetUrl } = req.query;
 
-  if (!tweetUrl || !tweetUrl.includes('twitter.com')) {
-    return res.status(400).json({ error: 'Invalid or missing Twitter URL' });
+  if (!tweetUrl || (!tweetUrl.includes('twitter.com') && !tweetUrl.includes('x.com'))) {
+  return res.status(400).json({ error: 'Invalid or missing Twitter/X URL' });
   }
 
   try {
