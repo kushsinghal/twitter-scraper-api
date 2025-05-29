@@ -6,7 +6,6 @@ async function scrapeTweet(tweetUrl) {
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    executablePath: puppeteer.executablePath(), // Use Puppeteer's Chromium
   });
 
   try {
