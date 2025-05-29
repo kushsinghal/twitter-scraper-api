@@ -1,6 +1,6 @@
 // scraper.js
 
-const puppeteer = require('puppeteer');
+const puppeteer = require("puppeteer");
 
 async function scrapeTweet(tweetUrl) {
   const browser = await puppeteer.launch({
