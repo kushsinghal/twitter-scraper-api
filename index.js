@@ -1,12 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const scrapeTweet = require('./scraper');
-const cors = require('cors');
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(require('cors')());
 
 app.get('/scrape', async (req, res) => {
   const { tweetUrl } = req.query;
@@ -25,5 +23,5 @@ app.get('/scrape', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+  console.log(`✅ Server running at http://localhost:${PORT}`);
 });
