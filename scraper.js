@@ -9,6 +9,8 @@ async function scrapeTweet(tweetUrl) {
     headless: chromium.headless,
     ignoreHTTPSErrors: true
   });
+  
+  console.log('Executable Path:', await chromium.executablePath());
 
   try {
     const page = await browser.newPage();
